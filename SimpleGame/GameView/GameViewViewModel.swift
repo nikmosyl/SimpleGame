@@ -21,6 +21,7 @@ final class GameViewViewModel {
     var timeInterval = 0.005
     
     var counter = 0
+    var score = 0
 
     var obstaclePositions: [ObstaclePosition : Double] = [
         .firstLeft : 0.0,
@@ -59,6 +60,7 @@ final class GameViewViewModel {
     
     @objc private func updateObstacleCounter() {
         counter += 1
+        score += 1
         
         obstaclePositions.forEach { key, value in
             if value > 1000 {
@@ -70,7 +72,7 @@ final class GameViewViewModel {
         
         checkPosition()
         
-        if counter > 1000 {
+        if counter > 1000  {
             obstacleTimer?.invalidate()
             obstacleTimer = nil
             counter = 0

@@ -85,15 +85,12 @@ struct GameView: View {
             }
         }
         .alert("GAME OVER", isPresented: $gameViewVM.gameOver, actions: {
-            Button(action: shutDown) {
+            Button(action: { gameOn = false }) {
                 Text("RESTART")
             }
         }, message: {
-            Text("tap the screen to change position")
+            Text("your score \(gameViewVM.score)")
         })
-    }
-    private func shutDown() {
-        gameOn = false
     }
 }
 
