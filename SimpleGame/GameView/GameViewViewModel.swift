@@ -10,8 +10,11 @@ import Observation
 
 @Observable
 final class GameViewViewModel {
+    
+    var height = 0.0
 
     var chipPosition = 0.0
+    var chipSize = 0.0
     var chipState = ChipState.ready
     var chipOnTheLeft = true
     var chipCounter = 2
@@ -25,11 +28,12 @@ final class GameViewViewModel {
 
     var obstaclePositions: [ObstaclePosition : Double] = [
         .firstLeft : 0.0,
-        .secondLeft : -500.0,
-        .thirdLeft : -1000.0,
-        .firstRight : -250.0,
-        .secondRight : -400.0,
-        .thirdRight : -800.0
+        .secondLeft : Double.random(in: -200 ... -100),
+        .thirdLeft : Double.random(in: -700 ... -500),
+        
+        .firstRight : Double.random(in: -300 ... -200),
+        .secondRight : Double.random(in: -500 ... -300),
+        .thirdRight : Double.random(in: -1000 ... -800)
     ]
     
     var gameOver = false
@@ -63,8 +67,8 @@ final class GameViewViewModel {
         score += 1
         
         obstaclePositions.forEach { key, value in
-            if value > 1000 {
-                obstaclePositions[key] = Double.random(in: -1000...0)
+            if value > height + obstacleSize {
+                obstaclePositions[key] = Double.random(in: -1000 ... -100)
             } else {
                 obstaclePositions[key, default: 0] += 1
             }
@@ -72,7 +76,7 @@ final class GameViewViewModel {
         
         checkPosition()
         
-        if counter > 1000  {
+        if counter > 500  {
             obstacleTimer?.invalidate()
             obstacleTimer = nil
             counter = 0
@@ -107,8 +111,8 @@ final class GameViewViewModel {
         
         obstaclePositions.forEach { key, value in
                         
-            if (lround(value-obstacleSize)...lround(value))
-                .contains(lround(chipPosition)) {
+            if (lround(value-obstacleSize)...lround(value)).contains(lround(chipPosition)) ||
+                (lround(value-obstacleSize)...lround(value)).contains(lround(chipPosition + chipSize)) {
                 
                 switch key {
                 case .firstLeft, .secondLeft, .thirdLeft:
@@ -125,6 +129,7 @@ final class GameViewViewModel {
     }
     
     private func stopGame() {
+        chipState = .inMove
         gameOver = true
         obstacleTimer?.invalidate()
         obstacleTimer = nil

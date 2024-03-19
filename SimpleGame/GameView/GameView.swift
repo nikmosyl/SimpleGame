@@ -19,7 +19,8 @@ struct GameView: View {
             let height = Double(geometry.size.height)
             let leadingBorder = width * 0.1
             let trailingBorder = width * 0.9
-            let figureSize = min(width, height) / 10
+            let chipSize = min(width, height) / 10
+            let obstacleSize = chipSize * 0.75
             
             ZStack {
                 Rectangle()
@@ -35,62 +36,87 @@ struct GameView: View {
                 ChipView(
                     horizontal: leadingBorder,
                     vertical: height * 0.8,
-                    size: figureSize,
-                    offset: trailingBorder - leadingBorder - figureSize,
+                    size: chipSize,
+                    offset: trailingBorder - leadingBorder - chipSize,
                     move: !gameViewVM.chipOnTheLeft
                 )
                 
                 ObstacleView(
                     horizontal: leadingBorder,
                     vertical: gameViewVM.obstaclePositions[.firstLeft] ?? 0,
-                    size: figureSize * 0.75
+                    size: obstacleSize,
+                    flank: true
                 )
                 
                 ObstacleView(
                     horizontal: leadingBorder,
                     vertical: gameViewVM.obstaclePositions[.secondLeft] ?? 0,
-                    size: figureSize * 0.75
+                    size: obstacleSize,
+                    flank: true
                 )
                 
                 ObstacleView(
                     horizontal: leadingBorder,
                     vertical: gameViewVM.obstaclePositions[.thirdLeft] ?? 0,
-                    size: figureSize * 0.75
+                    size: obstacleSize,
+                    flank: true
                 )
                 
                 ObstacleView(
                     horizontal: trailingBorder,
                     vertical: gameViewVM.obstaclePositions[.firstRight] ?? 0,
-                    size: -figureSize * 0.75
+                    size: obstacleSize,
+                    flank: false
                 )
                 
                 ObstacleView(
                     horizontal: trailingBorder,
                     vertical: gameViewVM.obstaclePositions[.secondRight] ?? 0,
-                    size: -figureSize * 0.75
+                    size: obstacleSize,
+                    flank: false
                 )
                 
                 ObstacleView(
                     horizontal: trailingBorder,
                     vertical: gameViewVM.obstaclePositions[.thirdRight] ?? 0,
-                    size: -figureSize * 0.75
+                    size: obstacleSize,
+                    flank: false
                 )
                 
-                
+                if gameViewVM.gameOver {
+                    VStack(spacing: 50) {
+                        Text("GAME OVER")
+                            .font(.title)
+                        
+                        Text("Your score: \(gameViewVM.score)")
+                            .bold()
+                        
+                        if gameViewVM.score < 1000 {
+                            Text("Tap the screen to make a move")
+                        }
+                        
+                        Button(action: { gameOn = false }) {
+                            Text("RESTART")
+                                .font(.title)
+                                .foregroundStyle(.background)
+                                .colorInvert()
+                        }
+                        .frame(width: trailingBorder - leadingBorder * 4)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(lineWidth: 3)
+                        )
+                    }
+                }
             }
             .onAppear {
+                gameViewVM.height = height
                 gameViewVM.chipPosition = height * 0.8
-                gameViewVM.obstacleSize = figureSize
+                gameViewVM.chipSize = chipSize
+                gameViewVM.obstacleSize = obstacleSize
                 gameViewVM.startObstacleTimer()
             }
         }
-        .alert("GAME OVER", isPresented: $gameViewVM.gameOver, actions: {
-            Button(action: { gameOn = false }) {
-                Text("RESTART")
-            }
-        }, message: {
-            Text("your score \(gameViewVM.score)")
-        })
     }
 }
 

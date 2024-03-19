@@ -15,8 +15,6 @@
 		11C157082BA85CE40059C6AF /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C157072BA85CE40059C6AF /* ChipView.swift */; };
 		11C1570A2BA869DC0059C6AF /* VerticalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C157092BA869DC0059C6AF /* VerticalLineView.swift */; };
 		11C1570C2BA86B460059C6AF /* GameViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1570B2BA86B460059C6AF /* GameViewViewModel.swift */; };
-		11C1570E2BA86CDB0059C6AF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1570D2BA86CDB0059C6AF /* Chip.swift */; };
-		11C157132BA871D50059C6AF /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C157122BA871D50059C6AF /* Obstacle.swift */; };
 		11C157152BA8B9E90059C6AF /* ObstacleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C157142BA8B9E90059C6AF /* ObstacleView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +28,6 @@
 		11C157072BA85CE40059C6AF /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 		11C157092BA869DC0059C6AF /* VerticalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLineView.swift; sourceTree = "<group>"; };
 		11C1570B2BA86B460059C6AF /* GameViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewViewModel.swift; sourceTree = "<group>"; };
-		11C1570D2BA86CDB0059C6AF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
-		11C157122BA871D50059C6AF /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		11C157142BA8B9E90059C6AF /* ObstacleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +64,6 @@
 				11C156F72BA84F7F0059C6AF /* SimpleGameApp.swift */,
 				11C156F92BA84F7F0059C6AF /* ContentView.swift */,
 				11C157102BA86CEB0059C6AF /* GameView */,
-				11C1570F2BA86CE00059C6AF /* Models */,
 				11C157112BA86D330059C6AF /* Views */,
 				11C156FB2BA84F800059C6AF /* Assets.xcassets */,
 				11C156FD2BA84F800059C6AF /* Preview Content */,
@@ -82,15 +77,6 @@
 				11C156FE2BA84F800059C6AF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		11C1570F2BA86CE00059C6AF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				11C1570D2BA86CDB0059C6AF /* Chip.swift */,
-				11C157122BA871D50059C6AF /* Obstacle.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		11C157102BA86CEB0059C6AF /* GameView */ = {
@@ -189,8 +175,6 @@
 				11C157152BA8B9E90059C6AF /* ObstacleView.swift in Sources */,
 				11C157062BA8507B0059C6AF /* GameView.swift in Sources */,
 				11C156F82BA84F7F0059C6AF /* SimpleGameApp.swift in Sources */,
-				11C157132BA871D50059C6AF /* Obstacle.swift in Sources */,
-				11C1570E2BA86CDB0059C6AF /* Chip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

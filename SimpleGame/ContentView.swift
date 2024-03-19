@@ -18,8 +18,7 @@ struct ContentView: View {
                     .foregroundStyle(.background)
                     .colorInvert()
             }
-            .frame(width: 200, height: 50)
-//            .clipShape(.rect(cornerRadius: 20))
+            .frame(width: 200)
             .overlay(
                 RoundedRectangle(cornerRadius: 15)
                     .stroke(lineWidth: 4)

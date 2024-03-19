@@ -15,11 +15,6 @@ struct ChipView: View {
     let offset: Double
     let move: Bool
     
-//    private var leading: Double { horizontal - size/2 }
-//    private var trailing: Double { horizontal + size/2 }
-//    private var top: Double { vertical + size/2}
-//    private var bottom: Double { vertical - size/2}
-    
     var body: some View {
         Path { path in
             path.move(to: CGPoint(x: horizontal, y: vertical))
@@ -32,7 +27,7 @@ struct ChipView: View {
             style: StrokeStyle(lineWidth: 3)
         )
         .offset(x: move ? offset : 0)
-        .animation(.easeInOut(duration: 0.3), value: move)
+        .animation(.easeOut(duration: 0.3), value: move)
     }
 }
 
